@@ -1,0 +1,30 @@
+#!/bin/bash
+#by Aaron
+#https://github.com/AaronGarcia97/miningLogger
+
+t=test.txt
+l=log.txt
+w="$(cat wallet.txt)"
+url=http://dwarfpool.com/eth/address?wallet=
+
+curl $url$w > $t;
+OUTPUT="$(cat $t | grep "badge badge-money" | sed '1q;d' | grep -Eo '[+-]?[0-9]+([.][0-9]+)?')"
+rm $t;
+
+#If log.txt doesn't exist, create it and insert balance
+#OR
+#If log.txt exists, but is empty, insert balance
+if [ ! -f $l ] || [ ! -s $l ] ; then
+  echo $OUTPUT > $l
+  echo 0 >> $l
+else
+  #Insert current balance
+  echo $OUTPUT >> $l
+  #Get previous value
+  prev="$(cat $l | tail -n5 | head -n1)"
+  #Dealing with floating point subtractions + insert prev - curr balance
+  echo "$OUTPUT $prev" | awk '{print $1-$2}' >> $l;
+fi
+
+echo "`date '+%Y-%m-%d %H:%M:%S'`" >> $l;
+echo "-----------------------------" >> $l
