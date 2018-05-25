@@ -26,6 +26,18 @@ you have to setup a cronjob to tell the script to execute every X hours.
 
 More info on cron [here](https://www.debian-tutorials.com/crontab-tutorial-cron-howto)
 
+The script prints a `log.txt` that looks like this:
+`
+0.27713078                    <- previous balance
+0.277131
+2018-05-24 00:00:00
+-----------------------------
+0.28366063                    <- current balance
+0.00652985                    <- this is the difference (current-previous)
+2018-05-25 00:00:00
+-----------------------------
+`
+
 ENJOY!
 
 Feel free to contribute to the project. More features coming soon.
