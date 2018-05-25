@@ -25,9 +25,9 @@ you have to setup a cronjob to tell the script to execute every X hours.
   <br>Nano editor `CTRL + X -> Y -> ENTER`
 
 #### More info:
-[<b>crontab<b>](https://www.debian-tutorials.com/crontab-tutorial-cron-howto)<br>
-[<b>vi editor<b>](https://kb.iu.edu/d/adxz)<br>
-[<b>nano editor<b>](https://wiki.gentoo.org/wiki/Nano/Basics_Guide)
+[crontab](https://www.debian-tutorials.com/crontab-tutorial-cron-howto)<br>
+[vi editor](https://kb.iu.edu/d/adxz)<br>
+[nano editor](https://wiki.gentoo.org/wiki/Nano/Basics_Guide)<br>
 
 
 The script prints a `log.txt` that looks like this:
