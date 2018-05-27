@@ -5,7 +5,9 @@ Script designed in order to track profit from dwarfpool pool using ethereum
 miner. :chart_with_upwards_trend: :moneybag:
 
 ### Instructions
-- Go to root directory `cd /path/to/miningLogger`
+- CLONE the repository on YOUR DESKTOP:
+<br>`cd ~/Desktop/ && git clone https://github.com/AaronGarcia97/miningLogger.git`
+- Go to root directory `cd ~/Desktop/miningLogger`
 - Open your terminal and type `echo "YourWalletAddress" > wallet.txt`
 - Give the script permission of execution `chmod +x miningLogger`
 - Test that the script works `./miningLogger`
@@ -19,7 +21,7 @@ you have to setup a cronjob to tell the script to execute every X hours.
 - Insert in 1st line `SHELL=/bin/bash`
 - Insert a 2nd line depending on when you want to run the file in my case I want
   the script to be ran at 00:00 every day. So I insert:
-  <br>`0 0 * * * /path/to/miningLogger`
+  <br>`0 0 * * * /path/to/miningLoggerScript`
 - Save the file and close it,
   <br>Vi editor `ESC -> !wq -> ENTER`
   <br>Nano editor `CTRL + X -> Y -> ENTER`
