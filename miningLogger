@@ -5,7 +5,7 @@
 pa=~/Desktop/miningLogger
 t=test.txt
 l=log.txt
-w="$(cat wallet.txt)"
+w="$(cat ~/Desktop/miningLogger/wallet.txt)"
 url=http://dwarfpool.com/eth/address?wallet=
 
 curl $url$w > $pa/$t;
