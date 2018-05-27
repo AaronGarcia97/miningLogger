@@ -2,29 +2,30 @@
 #by Aaron
 #https://github.com/AaronGarcia97/miningLogger
 
+pa=~/Desktop/miningLogger
 t=test.txt
 l=log.txt
 w="$(cat wallet.txt)"
 url=http://dwarfpool.com/eth/address?wallet=
 
-curl $url$w > $t;
-OUTPUT="$(cat $t | grep "badge badge-money" | sed '1q;d' | grep -Eo '[+-]?[0-9]+([.][0-9]+)?')"
-rm $t;
+curl $url$w > $pa/$t;
+OUTPUT="$(cat $pa/$t | grep "badge badge-money" | sed '1q;d' | grep -Eo '[+-]?[0-9]+([.][0-9]+)?')"
+rm $pa/$t;
 
 #If log.txt doesn't exist, create it and insert balance
 #OR
 #If log.txt exists, but is empty, insert balance
-if [ ! -f $l ] || [ ! -s $l ] ; then
-  echo $OUTPUT > $l
-  echo 0 >> $l
+if [ ! -f $pa/$l ] || [ ! -s $pa/$l ] ; then
+  echo $OUTPUT > $pa/$l
+  echo 0 >> $pa/$l
 else
   #Insert current balance
-  echo $OUTPUT >> $l
+  echo $OUTPUT >> $pa/$l
   #Get previous value
-  prev="$(cat $l | tail -n5 | head -n1)"
+  prev="$(cat $pa/$l | tail -n5 | head -n1)"
   #Dealing with floating point subtractions + insert prev - curr balance
-  echo "$OUTPUT $prev" | awk '{print $1-$2}' >> $l;
+  echo "$OUTPUT $prev" | awk '{print $1-$2}' >> $pa/$l;
 fi
 
-echo "`date '+%Y-%m-%d %H:%M:%S'`" >> $l;
-echo "-----------------------------" >> $l
+echo "`date '+%Y-%m-%d %H:%M:%S'`" >> $pa/$l;
+echo "-----------------------------" >> $pa/$l
